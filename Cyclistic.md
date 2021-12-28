@@ -45,7 +45,7 @@ compare_df_cols(oct_2020,nov_2020,dec_2020,jan_2021,feb_2021,mar_2021,apr_2021,m
     ## 1 character character character character character character
     ## 2 character character character character character character
 
-## Since october and november have start\_station\_df and end\_station\_id as numeric data type, we need to convert them to character so that they can be correctly bound into a single dataframe
+## Since october and november have start_station_df and end_station_id as numeric data type, we need to convert them to character so that they can be correctly bound into a single dataframe
 
 ``` r
 oct_2020 <- mutate(oct_2020, start_station_id = as.character(start_station_id),
@@ -95,7 +95,7 @@ master_df <- subset(master_df, select = -c(start_lat,start_lng,end_lat,end_lng,r
 str(master_df)
 ```
 
-    ## tibble [5,136,261 x 9] (S3: tbl_df/tbl/data.frame)
+    ## tibble [5,136,261 × 9] (S3: tbl_df/tbl/data.frame)
     ##  $ ride_id           : chr [1:5136261] "ACB6B40CF5B9044C" "DF450C72FD109C01" "B6396B54A15AC0DF" "44A4AEE261B9E854" ...
     ##  $ rideable_type     : chr [1:5136261] "electric_bike" "electric_bike" "electric_bike" "electric_bike" ...
     ##  $ started_at        : POSIXct[1:5136261], format: "2020-10-31 19:39:43" "2020-10-31 23:50:08" ...
@@ -142,40 +142,40 @@ summary(master_df)
 skim(master_df)
 ```
 
-|                                                  |            |
-|:-------------------------------------------------|:-----------|
-| Name                                             | master\_df |
-| Number of rows                                   | 5136261    |
-| Number of columns                                | 9          |
-| \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_   |            |
-| Column type frequency:                           |            |
-| character                                        | 7          |
-| POSIXct                                          | 2          |
-| \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ |            |
-| Group variables                                  | None       |
+|                                                  |           |
+|:-------------------------------------------------|:----------|
+| Name                                             | master_df |
+| Number of rows                                   | 5136261   |
+| Number of columns                                | 9         |
+| \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_   |           |
+| Column type frequency:                           |           |
+| character                                        | 7         |
+| POSIXct                                          | 2         |
+| \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ |           |
+| Group variables                                  | None      |
 
 Data summary
 
 **Variable type: character**
 
-| skim\_variable       | n\_missing | complete\_rate | min | max | empty | n\_unique | whitespace |
-|:---------------------|-----------:|---------------:|----:|----:|------:|----------:|-----------:|
-| ride\_id             |          0 |           1.00 |   5 |  23 |     0 |   5136052 |          0 |
-| rideable\_type       |          0 |           1.00 |  11 |  13 |     0 |         3 |          0 |
-| start\_station\_name |     523467 |           0.90 |   3 |  53 |     0 |       784 |          0 |
-| start\_station\_id   |     523781 |           0.90 |   1 |  36 |     0 |      1288 |          0 |
-| end\_station\_name   |     567268 |           0.89 |  10 |  53 |     0 |       781 |          0 |
-| end\_station\_id     |     567501 |           0.89 |   1 |  36 |     0 |      1288 |          0 |
-| member\_casual       |          0 |           1.00 |   6 |   6 |     0 |         2 |          0 |
+| skim_variable      | n_missing | complete_rate | min | max | empty | n_unique | whitespace |
+|:-------------------|----------:|--------------:|----:|----:|------:|---------:|-----------:|
+| ride_id            |         0 |          1.00 |   5 |  23 |     0 |  5136052 |          0 |
+| rideable_type      |         0 |          1.00 |  11 |  13 |     0 |        3 |          0 |
+| start_station_name |    523467 |          0.90 |   3 |  53 |     0 |      784 |          0 |
+| start_station_id   |    523781 |          0.90 |   1 |  36 |     0 |     1288 |          0 |
+| end_station_name   |    567268 |          0.89 |  10 |  53 |     0 |      781 |          0 |
+| end_station_id     |    567501 |          0.89 |   1 |  36 |     0 |     1288 |          0 |
+| member_casual      |         0 |          1.00 |   6 |   6 |     0 |        2 |          0 |
 
 **Variable type: POSIXct**
 
-| skim\_variable | n\_missing | complete\_rate | min                 | max                 | median              | n\_unique |
-|:---------------|-----------:|---------------:|:--------------------|:--------------------|:--------------------|----------:|
-| started\_at    |          0 |              1 | 2020-10-01 00:00:06 | 2021-09-30 23:59:48 | 2021-06-21 18:01:31 |   4103233 |
-| ended\_at      |          0 |              1 | 2020-10-01 00:05:09 | 2021-10-01 22:55:35 | 2021-06-21 18:20:59 |   4095094 |
+| skim_variable | n_missing | complete_rate | min                 | max                 | median              | n_unique |
+|:--------------|----------:|--------------:|:--------------------|:--------------------|:--------------------|---------:|
+| started_at    |         0 |             1 | 2020-10-01 00:00:06 | 2021-09-30 23:59:48 | 2021-06-21 18:01:31 |  4103233 |
+| ended_at      |         0 |             1 | 2020-10-01 00:05:09 | 2021-10-01 22:55:35 | 2021-06-21 18:20:59 |  4095094 |
 
-## Since we removed ride\_length and day\_of\_week to show how they are done with the help of R, we add columns to indicate the day, month, year for each record
+## Since we removed ride_length and day_of_week to show how they are done with the help of R, we add columns to indicate the day, month, year for each record
 
 ``` r
 master_df$date <- as.Date(master_df$started_at)
@@ -190,7 +190,14 @@ master_df$day_of_month <- strftime(master_df$date, "%d")
 master_df$day_of_week <- strftime(master_df$date, "%A")
 ```
 
-### Add ride\_length column using difftime
+### Add start_hour and end_hour from started_at and ended_at colums using strftime
+
+``` r
+master_df$start_hour <- strftime(master_df$started_at, "%H")
+master_df$end_hour <- strftime(master_df$ended_at, "%H")
+```
+
+### Add ride_length column using difftime
 
 ``` r
 master_df$ride_length <- difftime(master_df$ended_at,master_df$started_at)
@@ -204,7 +211,7 @@ is.numeric(master_df$ride_length)
 
     ## [1] FALSE
 
-### Convert ride\_length to numeric for calcualtions
+### Convert ride_length to numeric for calcualtions
 
 ``` r
 master_df$ride_length <- as.numeric(as.character(master_df$ride_length))
@@ -222,7 +229,7 @@ summary(master_df$ride_length)
     ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
     ## -1742998      424      756     1237     1369  3356649
 
-### ride\_length cannot be negative, select rows which are positive (new master dataframe will be created since we will be removing a lot of rows)
+### ride_length cannot be negative, select rows which are positive (new master dataframe will be created since we will be removing a lot of rows)
 
 ### remove start station name for trips where bikes were taken away for quality check
 
@@ -268,14 +275,14 @@ summary(master_df_2)
     ##                                                                             
     ##                                                                             
     ##                                                                             
-    ##   ride_length     
-    ##  Min.   :      0  
-    ##  1st Qu.:    431  
-    ##  Median :    764  
-    ##  Mean   :   1404  
-    ##  3rd Qu.:   1382  
-    ##  Max.   :3356649  
-    ##  NA's   :523409
+    ##   start_hour          end_hour          ride_length     
+    ##  Length:5133521     Length:5133521     Min.   :      0  
+    ##  Class :character   Class :character   1st Qu.:    431  
+    ##  Mode  :character   Mode  :character   Median :    764  
+    ##                                        Mean   :   1404  
+    ##                                        3rd Qu.:   1382  
+    ##                                        Max.   :3356649  
+    ##                                        NA's   :523409
 
 ### Removing rows with NA across all columns
 
@@ -366,7 +373,7 @@ master_df_2 %>%
   geom_col(position = 'dodge')
 ```
 
-![](Cyclistic_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
+![](Cyclistic_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
 
 ## Let’s visualize the number of rides by rider type on each day of the week
 
@@ -380,7 +387,7 @@ master_df_2 %>%
   geom_col(position = 'dodge')
 ```
 
-![](Cyclistic_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
+![](Cyclistic_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
 
 ## We can aggregate daily ride, average duration of rides and number of rides
 
@@ -391,7 +398,7 @@ master_df_2 %>%
   arrange(member_casual,day_of_week)
 ```
 
-    ## # A tibble: 14 x 4
+    ## # A tibble: 14 × 4
     ## # Groups:   member_casual [2]
     ##    member_casual day_of_week number_of_ride average_duration
     ##    <chr>         <ord>                <int>            <dbl>
